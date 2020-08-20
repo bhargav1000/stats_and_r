@@ -1,2 +1,6 @@
 #  Book
 book
+
+# R config
+.Rproj.user
+.Rhistory
