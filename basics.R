@@ -38,3 +38,24 @@ download(url, destfile=filename)
 x <- unlist( read.csv(filename) )
 set.seed(5)
 abs(mean(sample(x, 5)) - mean(x))
+
+########################################################
+library(downloader) 
+url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleControlsPopulation.csv"
+filename <- basename(url)
+download(url, destfile=filename)
+x <- unlist( read.csv(filename) )
+
+
+set.seed(1)
+nulls <- vector("numeric", 1000)
+for(i in 1:1000){
+  random_sample <- sample(x, 50)
+  nulls[i] <- mean(random_sample)
+}
+
+obs = mean(x)
+
+mean(abs(nulls-obs)>1)
+  
+  
